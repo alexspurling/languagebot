@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+{% csrf_token %}
+<meta name="csrf-token" content="{{ csrf_token }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Bot</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .image-container {
+            text-align: center;
+        }
+        .text-field-container {
+            margin-top: 20px;
+        }
+        .text-field-container input[type="text"] {
+            width: 600px;
+            height: 20px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .textbox {
+            margin-top: 20px;
+            width: 80%;
+            max-width: 600px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+        .icon-container {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 50px;
+        }
+        table {
+            width: 600px;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 2px solid lightgrey;
+        }
+        td:first-child {
+            width: 26%;
+            text-align: right;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        .c {
+            color: SeaGreen;
+        }
+        .i {
+            color: Red;
+        }
+        div.chat {
+            width: 600px;
+            height: auto;
+            max-height: 600px;
+            overflow: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px; /* Space between each message */
+        }
+        .bot, .human {
+            display: inline-block;
+            padding: 10px;
+            border: 1px solid WhiteSmoke;
+            border-radius: 10px;
+            background-color: WhiteSmoke;
+            line-height: 1.6;
+            max-width: 600px;
+        }
+        .bot {
+            text-align: left;
+            align-self: flex-start; /* Aligns the bot messages to the left */
+        }
+        .human {
+            text-align: right;
+            align-self: flex-end; /* Aligns the human messages to the right */
+        }
+    </style>
+    <script src="{%static 'main.js'%}">
+    </script>
+</head>
+<body>
+<div class="icon-container">
+    <img src="{%static 'italy-flag-icon.svg'%}" alt="Icon"/>
+</div>
+<div class="image-container">
+    <img src="{%static 'Logo.png'%}" alt="Centered Image">
+    <h2>Language Bot</h2>
+</div>
+<!--<div class="translations-table" id="translations">-->
+<!--    <table>-->
+<!--        <tr><td>Translate:</td><td id="englishCell"></td></tr>-->
+<!--        <tr><td>Your translation:</td><td id="entryCell"></td></tr>-->
+<!--        <tr><td>Correct translation:</td><td id="correctCell"></td></tr>-->
+<!--    </table>-->
+<!--</div>-->
+<div class="chat" id="chat">
+    <div class="bot">First, please pick a topic to talk about.</div>
+    <div class="human">Hobbies</div>
+    <div class="bot">Ok, let's learn about hobbies.</div>
+</div>
+<div class="text-field-container">
+    <input id="textfield" type="text">
+</div>
+<div id="status"></div>
+</body>
+</html>

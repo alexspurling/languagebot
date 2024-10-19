@@ -1,0 +1,6 @@
+__pycache__
+.idea/
+db.sqlite3
+
+languagebot/secrets.py
+server/secrets.py

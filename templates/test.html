@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <title>Test page</title>
+    <style>
+        .chat {
+          width: 100%; /* Full width of the parent container */
+          max-width: 600px; /* Optional: Set a maximum width for the chat */
+          height: 400px; /* Optional: Set a fixed height for the chat area */
+          border: 1px solid #ccc; /* Optional: Add a border to the chat container */
+          padding: 10px; /* Optional: Padding inside the chat area */
+          overflow-y: auto; /* Enables vertical scrolling if the content exceeds height */
+          background-color: #f9f9f9; /* Optional: Background color of the chat area */
+          display: flex;
+          flex-direction: column; /* Aligns messages vertically */
+          gap: 10px; /* Space between each message */
+        }
+
+        .bot, .human {
+          max-width: 80%; /* Prevent message bubbles from being too wide */
+          word-wrap: break-word; /* Ensure long words or links break into the next line */
+          padding: 10px; /* Padding inside the message bubbles */
+          border-radius: 10px; /* Rounded corners for message bubbles */
+          display: inline-block;
+        }
+
+        .bot {
+          background-color: #f0f0f0; /* Light gray background for bot messages */
+          align-self: flex-start; /* Aligns the bot messages to the left */
+        }
+
+        .human {
+          background-color: #e0e0ff; /* Light blue background for human messages */
+          align-self: flex-end; /* Aligns the human messages to the right */
+        }
+    </style>
+</head>
+<body>
+<div class="chat">
+    <div class="bot">Ok, let's learn about hobbies</div>
+    <div class="bot">Translate the following:</div>
+    <div class="bot">I love painting in my free time.</div>
+    <div class="human">Adoro dipingere nel mio tempo libero.</div>
+    <div class="bot">The correct translation is:</div>
+    <div class="bot">Adoro dipingere nel mio tempo libero.</div>
+</div>
+</body>
+</html>
