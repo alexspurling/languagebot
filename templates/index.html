@@ -17,6 +17,16 @@
             margin: 0;
             font-family: Arial, sans-serif;
         }
+        .container {
+            width: 100%;
+            max-width: 900px; /* Limit the width for larger screens */
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
         .image-container {
             text-align: center;
         }
@@ -24,7 +34,7 @@
             margin-top: 20px;
         }
         .text-field-container input[type="text"] {
-            width: 600px;
+            width: 97%;
             height: 20px;
             padding: 10px;
             font-size: 16px;
@@ -34,7 +44,7 @@
         .textbox {
             margin-top: 20px;
             width: 80%;
-            max-width: 600px;
+            max-width: 900px;
             border: 1px solid #ccc;
             padding: 10px;
             background-color: #f9f9f9;
@@ -45,20 +55,8 @@
             right: 10px;
             width: 50px;
         }
-        table {
-            width: 600px;
-            border-collapse: collapse;
-        }
-        table, th, td {
-            border: 2px solid lightgrey;
-        }
-        td:first-child {
-            width: 26%;
-            text-align: right;
-        }
-        th, td {
-            padding: 8px;
-            text-align: left;
+        .status {
+            color: lightgray;
         }
         .c {
             color: SeaGreen;
@@ -67,7 +65,7 @@
             color: Red;
         }
         div.chat {
-            width: 600px;
+            width: 100%;
             height: auto;
             max-height: 600px;
             overflow: auto;
@@ -82,7 +80,7 @@
             border-radius: 10px;
             background-color: WhiteSmoke;
             line-height: 1.6;
-            max-width: 600px;
+            max-width: 900px;
         }
         .bot {
             text-align: left;
@@ -92,33 +90,43 @@
             text-align: right;
             align-self: flex-end; /* Aligns the human messages to the right */
         }
+
+        /* Mobile Specific Styles */
+        @media (max-width: 768px) {
+            .container {
+                width: 100%; /* Full width on mobile */
+                max-width: none; /* Remove max-width constraint */
+                padding: 15px; /* Reduce padding on smaller screens */
+                border-radius: 0; /* Remove border radius on mobile */
+            }
+        }
     </style>
     <script src="{%static 'main.js'%}">
     </script>
 </head>
 <body>
-<div class="icon-container">
-    <img src="{%static 'italy-flag-icon.svg'%}" alt="Icon"/>
+<div class="container">
+<!--    <div class="icon-container">-->
+<!--        <img src="{%static 'italy-flag-icon.svg'%}" alt="Icon"/>-->
+<!--    </div>-->
+    <div class="image-container">
+        <img src="{%static 'Logo.png'%}" alt="Centered Image">
+        <h2>Language Bot</h2>
+    </div>
+    <!--<div class="translations-table" id="translations">-->
+    <!--    <table>-->
+    <!--        <tr><td>Translate:</td><td id="englishCell"></td></tr>-->
+    <!--        <tr><td>Your translation:</td><td id="entryCell"></td></tr>-->
+    <!--        <tr><td>Correct translation:</td><td id="correctCell"></td></tr>-->
+    <!--    </table>-->
+    <!--</div>-->
+    <div class="chat" id="chat">
+        <div class="bot">Hi, what language would you like to learn?</div>
+    </div>
+    <div class="text-field-container">
+        <input id="textfield" type="text">
+    </div>
+    <div id="status" class="status"></div>
 </div>
-<div class="image-container">
-    <img src="{%static 'Logo.png'%}" alt="Centered Image">
-    <h2>Language Bot</h2>
-</div>
-<!--<div class="translations-table" id="translations">-->
-<!--    <table>-->
-<!--        <tr><td>Translate:</td><td id="englishCell"></td></tr>-->
-<!--        <tr><td>Your translation:</td><td id="entryCell"></td></tr>-->
-<!--        <tr><td>Correct translation:</td><td id="correctCell"></td></tr>-->
-<!--    </table>-->
-<!--</div>-->
-<div class="chat" id="chat">
-    <div class="bot">First, please pick a topic to talk about.</div>
-    <div class="human">Hobbies</div>
-    <div class="bot">Ok, let's learn about hobbies.</div>
-</div>
-<div class="text-field-container">
-    <input id="textfield" type="text">
-</div>
-<div id="status"></div>
 </body>
 </html>

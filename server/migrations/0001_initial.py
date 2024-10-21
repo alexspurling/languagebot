@@ -12,22 +12,22 @@ class Migration(migrations.Migration):
         migrations.RunSQL(
             sql="""
                 CREATE TABLE sentences (
-                    id INTEGER PRIMARY KEY,
                     language TEXT NOT NULL,
                     english TEXT NOT NULL,
                     translation TEXT NOT NULL,
-                    topic TEXT NOT NULL
+                    topic TEXT NOT NULL,
+                    PRIMARY KEY (language, english, translation)
                 );""",
             reverse_sql="DROP TABLE sentences;",
         ),
         migrations.RunSQL(
             sql="""
                 CREATE TABLE word_scores (
-                    id INTEGER PRIMARY_KEY,
                     language TEXT NOT NULL,
                     word TEXT NOT NULL,
                     score FLOAT NOT NULL,
-                    last_seen DATETIME NOT NULL
+                    last_seen DATETIME NOT NULL,
+                    PRIMARY KEY (language, word)
                 )""",
             reverse_sql="DROP TABLE word_scores;",
         ),

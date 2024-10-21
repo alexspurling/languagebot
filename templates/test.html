@@ -1,47 +1,80 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Test page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Lorem Ipsum and Text Field</title>
     <style>
-        .chat {
-          width: 100%; /* Full width of the parent container */
-          max-width: 600px; /* Optional: Set a maximum width for the chat */
-          height: 400px; /* Optional: Set a fixed height for the chat area */
-          border: 1px solid #ccc; /* Optional: Add a border to the chat container */
-          padding: 10px; /* Optional: Padding inside the chat area */
-          overflow-y: auto; /* Enables vertical scrolling if the content exceeds height */
-          background-color: #f9f9f9; /* Optional: Background color of the chat area */
-          display: flex;
-          flex-direction: column; /* Aligns messages vertically */
-          gap: 10px; /* Space between each message */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0; /* Default background for desktop */
         }
 
-        .bot, .human {
-          max-width: 80%; /* Prevent message bubbles from being too wide */
-          word-wrap: break-word; /* Ensure long words or links break into the next line */
-          padding: 10px; /* Padding inside the message bubbles */
-          border-radius: 10px; /* Rounded corners for message bubbles */
-          display: inline-block;
+        .container {
+            width: 100%;
+            max-width: 600px; /* Limit the width for larger screens */
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border-radius: 8px;
+            box-sizing: border-box;
         }
 
-        .bot {
-          background-color: #f0f0f0; /* Light gray background for bot messages */
-          align-self: flex-start; /* Aligns the bot messages to the left */
+        .lorem-text {
+            margin-bottom: 25px;
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
         }
 
-        .human {
-          background-color: #e0e0ff; /* Light blue background for human messages */
-          align-self: flex-end; /* Aligns the human messages to the right */
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        /* Mobile Specific Styles */
+        @media (max-width: 768px) {
+            body {
+                background-color: #a3d5f7; /* Light blue background to indicate mobile view */
+            }
+
+            .container {
+                width: 100%; /* Full width on mobile */
+                max-width: none; /* Remove max-width constraint */
+                padding: 15px; /* Reduce padding on smaller screens */
+                border-radius: 0; /* Remove border radius on mobile */
+            }
+
+            .lorem-text {
+                font-size: 16px; /* Smaller font size for mobile */
+            }
+
+            input[type="text"] {
+                font-size: 16px; /* Smaller font size for input */
+                padding: 12px; /* Adjust padding for input */
+            }
         }
     </style>
 </head>
 <body>
-<div class="chat">
-    <div class="bot">Ok, let's learn about hobbies</div>
-    <div class="bot">Translate the following:</div>
-    <div class="bot">I love painting in my free time.</div>
-    <div class="human">Adoro dipingere nel mio tempo libero.</div>
-    <div class="bot">The correct translation is:</div>
-    <div class="bot">Adoro dipingere nel mio tempo libero.</div>
+
+<div class="container">
+    <div class="lorem-text">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque id sapien a lorem ultrices efficitur.
+    </div>
+    <input type="text" placeholder="Enter text here">
 </div>
+
 </body>
 </html>

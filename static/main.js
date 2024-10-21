@@ -1,5 +1,6 @@
 var topic = undefined;
-var sentence = undefined;
+var english = undefined;
+var language = undefined;
 
 function addBotText(text) {
     const chatDiv = document.getElementById("chat");
@@ -28,7 +29,7 @@ function getSentence(topic) {
             'Content-Type': 'application/json',
             'X-CSRFToken': csrftoken,
         },
-        body: JSON.stringify({ language: "italian", topic: topic }),
+        body: JSON.stringify({ language: language, topic: topic }),
     })
     .then(response => {
         if (response.ok) {
@@ -40,8 +41,8 @@ function getSentence(topic) {
     })
     .then(data => {
         console.log('Server response:', data);
-        sentence = data.sentence;
-        addBotText("Translate the following:\n" + data.sentence.english)
+        english = data.english;
+        addBotText("Translate the following:\n" + data.english)
         textField.value = "";
     })
     .catch(error => {
@@ -82,7 +83,7 @@ function submitSentence(entry) {
             'Content-Type': 'application/json',
             'X-CSRFToken': csrftoken,
         },
-        body: JSON.stringify({ language: "italian", sentence: sentence, submission: entry }),
+        body: JSON.stringify({ language: language, english: english, submission: entry }),
     })
     .then(response => {
         if (response.ok) {
@@ -102,7 +103,7 @@ function submitSentence(entry) {
         } else {
             var formattedEntry = getFormattedString(data.entered_word_matches, entry)
             addHumanText(formattedEntry);
-            addBotText("Incorrect. The correct translation is: <br>" + sentence.translation)
+            addBotText("Incorrect. The correct translation is: <br>" + data.translation)
             getSentence(topic); // Get the next sentence for the topic
         }
     })
@@ -122,9 +123,16 @@ document.addEventListener('DOMContentLoaded', function() {
     textField.addEventListener('keydown', function(event) {
         if (event.key === 'Enter') {
             if (textField.value) {
-                if (!topic) {
+                if (!language) {
+                    language = textField.value.toLowerCase();
+                    addHumanText(textField.value)
+                    textField.value = "";
+                    addBotText("Great, let's learn " + language + "! Now please choose a topic to learn about.")
+                } else if (!topic) {
                     topic = textField.value;
-                    topicField.innerHTML = "Topic: " + topic;
+                    addHumanText(textField.value)
+                    textField.value = "";
+                    addBotText("Ok, let's learn about " + topic + "...")
                     getSentence(topic);
                 } else {
                     entry = textField.value;
@@ -135,6 +143,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Default to hobbies for now
-    topic = "hobbies";
-    getSentence(topic);
+//    topic = "hobbies";
+//    getSentence(topic);
 });
